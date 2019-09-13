@@ -24,14 +24,10 @@ node {
                 GIT_TAG = "jenkins-$BUILD_NUMBER"
 	    }
 		echo "${GIT_TAG}"
-		sh("git tag "${GIT_TAG}")	
-              sh("git push origin --tags")
-               
+		git tag "${GIT_TAG}"	
+                git push origin --tags
+         }
 		
-	
-	}
-	
-	
 	stage('Build image') {       
        
          dockerImage = docker.build("sarathkumar14/myspringbootapp:${env.BUILD_ID}")

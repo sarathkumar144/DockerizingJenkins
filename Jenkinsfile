@@ -34,19 +34,17 @@ node {
       })
     }
 		
-    stage('Build Docker Image') {
-      // build docker image
-       dockerImage = docker.build("hello-world-java")
-    }
+    
 	
-      stage('Push image') {
+      stage('Build and Push image') {
         /* Finally, we'll push the image with two tags:
          * First, the incremental build number from Jenkins
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
         docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-            app.push("${env.BUILD_NUMBER}")
-            app.push("latest")
+        def customImage = docker.build("my-image:${env.BUILD_ID}")
+	/* Push the container to the custom Registry */
+        customImage.push()
         }
       }      
 }

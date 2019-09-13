@@ -19,12 +19,8 @@ node {
       sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
     }
 	
-	stage('Tag and Push'){
-            	echo "Build Number is ${env.BUILD_NUMBER}"
-		git push --tag origin master
-	}
-				 
-	 stage('Build image') {       
+	
+ stage('Build image') {       
        
          dockerImage = docker.build("sarathkumar14/myspringbootapp:${env.BUILD_ID}")
        

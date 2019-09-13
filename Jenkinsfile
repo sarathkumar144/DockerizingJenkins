@@ -22,8 +22,10 @@ node {
 	stage('Tag and Push'){
             environment { 
                 GIT_TAG = "jenkins-$BUILD_NUMBER"
-            }
-              git push origin \$GIT_TAG
+	    }
+		echo "${GIT_TAG}"
+		sh("git tag "${GIT_TAG}")	
+              sh("git push origin --tags")
                
 		
 	

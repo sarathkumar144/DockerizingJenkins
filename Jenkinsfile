@@ -12,7 +12,7 @@ node {
     
     stage('Clone Repo') { // for display purposes
       // Get some code from a GitHub repository
-      git 'https://github.com/dstar55/docker-hello-world-spring-boot.git'
+      git 'https://github.com/sarathkumar144/DockerizingJenkins.git'
             
       mvnHome = tool 'localMaven'
     }    

@@ -1,6 +1,6 @@
 node {
     // reference to maven
-    def mvnHome = tool 'Maven 3.3.9'
+    def mvnHome = tool 'localMaven'
 
     // holds reference to docker image
     def dockerImage
@@ -14,7 +14,7 @@ node {
       // Get some code from a GitHub repository
       git 'https://github.com/dstar55/docker-hello-world-spring-boot.git'
             
-      mvnHome = tool 'Maven 3.3.9'
+      mvnHome = tool 'localMaven'
     }    
   
     stage('Build Project') {

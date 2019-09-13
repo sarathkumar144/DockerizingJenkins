@@ -20,9 +20,9 @@ node {
     }
 	
 	stage('Tag and Push'){
-            	echo "${env.BUILD_NUMBER}"
-		//git tag "${GIT_TAG}"	
-                //git push origin --tags
+            	echo "Build Number is ${env.BUILD_NUMBER}"
+		git tag "${env.BUILD_NUMBER}"	
+                git push origin --tags
          }
 		
 	stage('Build image') {       

@@ -20,12 +20,9 @@ node {
     }
 	
 	stage('Tag and Push'){
-            environment { 
-                GIT_TAG = "jenkins-$BUILD_NUMBER"
-	    }
-		echo "${GIT_TAG}"
-		git tag "${GIT_TAG}"	
-                git push origin --tags
+            	echo "${jenkins-$BUILD_NUMBER}"
+		//git tag "${GIT_TAG}"	
+                //git push origin --tags
          }
 		
 	stage('Build image') {       

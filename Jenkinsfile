@@ -24,7 +24,7 @@ node {
             environment { 
                 GIT_TAG = "jenkins-$BUILD_NUMBER"
             }
-		sshagent(['GitHubCredentials]) {
+		sshagent(['GitHubCredentials']) {
                     sh("""
                         git push origin \$GIT_TAG
                      """)

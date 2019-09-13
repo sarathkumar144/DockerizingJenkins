@@ -20,7 +20,6 @@ node {
     }
 	
 	stage('Tag and Push'){
-	 when { branch 'master' }
             environment { 
                 GIT_TAG = "jenkins-$BUILD_NUMBER"
             }

@@ -36,16 +36,14 @@ node {
 		
     stage('Build Docker Image') {
       // build docker image
-      sh "whoami"
-      sh "ls -all /var/run/docker.sock"
-      sh "mv ./target/hello*.jar ./data" 
-      
-      dockerImage = docker.build("hello-world-java")
+      steps{
+        script {
+          dockerImage = docker.build registry + ":$BUILD_NUMBER"
+        }
+      }
     }
    
-    stage('Deploy Docker Image'){
-      
-      // deploy docker image to nexus
+     stage('Deploy Docker Image'){
 
       echo "Docker Image Tag Name: ${dockerImageTag}"
 

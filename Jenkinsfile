@@ -41,7 +41,7 @@ node {
          * First, the incremental build number from Jenkins
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
-        docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+        docker.withRegistry('https://registry.hub.docker.com/sarathkumar14/docker-jenkins', 'docker-hub-credentials') {
         def customImage = docker.build("my-image:${env.BUILD_ID}")
 	/* Push the container to the custom Registry */
         customImage.push()

@@ -49,14 +49,4 @@ node {
             app.push("latest")
         }
       }      
-    
-   
-     stage('Deploy Docker Image'){
-
-      echo "Docker Image Tag Name: ${dockerImageTag}"
-
-      sh "docker login -u sarathkumar14 -p Windows-123 ${dockerRepoUrl}"
-      sh "docker tag ${dockerImageName} ${dockerImageTag}"
-      sh "docker push ${dockerImageTag}"
-    }
 }

@@ -8,7 +8,7 @@ MAINTAINER sarathkumar14@gmail.com
 EXPOSE 8000
 
 #default command
-CMD java -jar /data/hello-world-0.1.0.jar
+CMD java -jar /target/hello-world-0.1.0.jar
 
 #copy hello world to docker image
-ADD ./data/hello-world-0.1.0.jar /data/hello-world-0.1.0.jar
+ADD ./target/hello-world-0.1.0.jar /target/hello-world-0.1.0.jar

@@ -21,7 +21,7 @@ node {
 	
 	stage('Tag and Push'){
             	echo "Build Number is ${env.BUILD_NUMBER}"
-		withCredentials([credentialsId: 'GitHubCredentials]){
+		withCredentials([credentialsId: 'GitHubCredentials']){
 		sh('git tag "${env.BUILD_NUMBER}"')	
                 sh('git push origin "${env.BUILD_NUMBER}"')
 		}

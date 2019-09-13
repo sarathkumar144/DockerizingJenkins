@@ -34,14 +34,13 @@ node {
         echo "Trying to push docker image to Dockerhub"
     }
     stage('Run Image') {
-	    echo "Trying to pull docker image from Dockerhub"
-	     docker.withServer('tcp://172.31.60.83:2377', 'swarm-certs') {
-        docker.image('sarathkumar14/myspringbootapp:${env.BUILD_ID}').withRun('-p 8000:8000') {
-		curl http://127.0.0.1:8000
+        echo "Trying to pull docker image from Dockerhub"
+        docker.withServer('tcp://172.31.60.83:2377', 'swarm-certs') {
+            docker.image('sarathkumar14/myspringbootapp:${env.BUILD_ID}').withRun('-p 8000:8000') {
+
+            }
+
+
         }
+
     }
-      
-
-  }
-
-}

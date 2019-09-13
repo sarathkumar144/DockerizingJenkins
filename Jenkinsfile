@@ -36,15 +36,15 @@ node {
 	
 	stage('Build image') {       
        
-        def customImage = docker.build("sarathkumar14/myspringbootapp:${env.BUILD_ID}")
+         dockerImage = docker.build("sarathkumar14/myspringbootapp:${env.BUILD_ID}")
        
       }      
     
 	
       stage('Push image') {
         docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-        customImage.push("${env.BUILD_NUMBER}")
-        customImage.push(lastest)
+        dockerImage.push("${env.BUILD_NUMBER}")
+        dockerImage.push(lastest)
         }
 	      echo "Trying to push docker image to Dockerhub"
       }      

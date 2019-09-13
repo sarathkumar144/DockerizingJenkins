@@ -33,19 +33,15 @@ node {
         }
         echo "Trying to push docker image to Dockerhub"
     }
-    stage('Pull Image') {
+    stage('Run Image') {
 	    echo "Trying to pull docker image from Dockerhub"
-        agent {
-            docker {
-                image 'sarathkumar14/myspringbootapp'
-                label '${env.BUILD_NUMBER}'
-                registryUrl 'https://registry.hub.docker.com'
-                registryCredentialsId 'docker-hub-credentials'
-            }
-		echo "Done"
+	     docker.withServer('tcp://172.31.60.83:2377', 'swarm-certs') {
+        docker.image('sarathkumar14/myspringbootapp:${env.BUILD_ID}').withRun('-p 8000:8000') {
+		curl http://127.0.0.1:8000
         }
-
-
     }
+      
+
+  }
 
 }

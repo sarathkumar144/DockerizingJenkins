@@ -37,8 +37,7 @@ node {
 	stage('Build image') {       
        
         def customImage = docker.build("sarathkumar14/myspringbootapp:${env.BUILD_ID}")
-        
-        }
+       
       }      
     
 	

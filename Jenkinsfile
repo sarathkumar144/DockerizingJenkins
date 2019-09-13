@@ -33,18 +33,20 @@ node {
           echo "This is branch b"
       })
     }
-		
+	
+	stage('Build image') {       
+       
+        def customImage = docker.build("sarathkumar14/myspringbootapp:${env.BUILD_ID}")
+        
+        }
+      }      
     
 	
-      stage('Build and Push image') {
-        /* Finally, we'll push the image with two tags:
-         * First, the incremental build number from Jenkins
-         * Second, the 'latest' tag.
-         * Pushing multiple tags is cheap, as all the layers are reused. */
-        docker.withRegistry('https://registry.hub.docker.com/sarathkumar14/docker-jenkins', 'docker-hub-credentials') {
-        def customImage = docker.build("my-image:${env.BUILD_ID}")
-	/* Push the container to the custom Registry */
-        customImage.push()
+      stage('Push image') {
+        docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+        app.push("${env.BUILD_NUMBER}")
+        app.push(lastest)
         }
+	      echo "Trying to push docker image to Dockerhub"
       }      
 }

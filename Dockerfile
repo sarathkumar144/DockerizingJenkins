@@ -5,7 +5,7 @@ FROM openjdk:8-jdk-alpine
 MAINTAINER sarathkumar14@gmail.com
 
 #expose port 8080
-EXPOSE 8080
+EXPOSE 8000
 
 #default command
 CMD java -jar /data/hello-world-0.1.0.jar

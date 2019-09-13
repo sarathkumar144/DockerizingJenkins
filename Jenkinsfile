@@ -30,7 +30,7 @@ node {
       stage('Push image') {
         docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
         dockerImage.push("${env.BUILD_NUMBER}")
-        dockerImage.push(lastest)
+        dockerImage.push(latest)
         }
 	      echo "Trying to push docker image to Dockerhub"
       }      

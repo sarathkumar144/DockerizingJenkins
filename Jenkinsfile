@@ -19,6 +19,20 @@ node {
       sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
     }
 	
+	stage('Tag and Push'){
+	 when { branch 'master' }
+            environment { 
+                GIT_TAG = "jenkins-$BUILD_NUMBER"
+            }
+		sshagent(['GitHubCredentials]) {
+                    sh("""
+                        git push origin \$GIT_TAG
+                     """)
+                }
+		
+	
+	}
+	
 	
 	stage('Build image') {       
        

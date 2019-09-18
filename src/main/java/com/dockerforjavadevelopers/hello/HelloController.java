@@ -10,7 +10,7 @@ public class HelloController {
     
     @GetMapping("/greet/{name}")
     public String index(@PathVariable String name) {
-        return "Hi!!  " + name;;
+        return "Hi!!  " + name;
     }
     
 }

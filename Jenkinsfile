@@ -33,6 +33,13 @@ node {
         }
         echo "Trying to push docker image to Dockerhub"
     }
+    
+    stage('Run Image'){
+    docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+     dockerImage.run()
+    }
+
+  }
 
 }
 
